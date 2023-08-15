@@ -84,7 +84,7 @@ function App() {
                     };
                     setUserData(userData);
                     handleLogin();
-                    navigate('/react-mesto-auth', { replace: true });
+                    navigate('/', { replace: true });
                 })
                 .catch((err) => {
                     console.log(`Ошибка в процессе проверки токена пользователя и получения личных данных: ${err}`);
@@ -293,7 +293,7 @@ function App() {
   React.useEffect(() => {
         if (isInfoTooltipOpened && isRegistrationSuccess) {
             setTimeout(() => {
-                navigate('react-mesto-auth/sign-in', { replace: false });
+                navigate('/sign-in', { replace: false });
                 closeAllPopups();
             }, 1200);
 
@@ -316,7 +316,7 @@ function App() {
   return (
       <div className={`page ${isActiveHeaderMenu && 'active'}`}>
           <Routes>
-              <Route path='react-mesto-auth/' element={
+              <Route path='/' element={
                   <Header
                       isActive={isActiveHeaderMenu}
                       onActive={toggleHeaderMenu}
@@ -327,7 +327,8 @@ function App() {
                   />
               }>
                   <Route
-                      index
+                      // index
+                      path=''
                       element={
                           <>
                               <ProtectedRoute isLoggedIn={isLoggedIn} />

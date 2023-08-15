@@ -13,7 +13,7 @@ export default function NotFound() {
                     что бы вернуться нажмите здесь
                 </p>
             </blockquote>
-            <Link className="not-found__link" to='/react-mesto-auth' replace>На главную страницу</Link>
+            <Link className="not-found__link" to='/' replace>На главную страницу</Link>
         </div>
     );
 };

@@ -8,7 +8,7 @@ function Header({ userData, setIsLoggedIn, isActive, onActive, isActiveHeaderMen
     const windowWidth = useWindowSize();
 
     const href = useMatch({ path: `${window.location.pathname}`, end: false });
-    const isRootHref = href.pathname.endsWith('/react-mesto-auth');
+    const isRootHref = href.pathname.endsWith('/');
     const isLoginHref = href.pathname.endsWith('/sign-in');
 
     const navigate = useNavigate();
