@@ -4,7 +4,7 @@ function checkResponse(res) {
     if (res.ok) {
         return res.json();
     } else {
-        Promise.reject(`Ошибка: ${res.status}/${res.statusText}`);
+        return Promise.reject(`Ошибка: ${res.status}/${res.statusText}`);
     };
 };
 

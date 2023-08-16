@@ -187,6 +187,8 @@ function App() {
                 };
             })
             .catch((err) => {
+                openInfoTooltip();
+                setIsRegistrationSuccess(false);
                 console.log(`Ошибка в процессе регистрации пользователя на сайте: ${err}`);
             })
             .finally(() => {
@@ -194,14 +196,14 @@ function App() {
             })
     };
 
-  function closePopupsOnOutsideClick(evt) {
-      const target = evt.target;
-      const checkSelector = selector => target.classList.contains(selector);
-
-      if (checkSelector('popup_opened') || checkSelector('popup__btn_action_close')) {
-          closeAllPopups();
-      };
-  };
+  // function closePopupsOnOutsideClick(evt) {
+  //     const target = evt.target;
+  //     const checkSelector = selector => target.classList.contains(selector);
+  //
+  //     if (checkSelector('popup_opened') || checkSelector('popup__btn_action_close')) {
+  //         closeAllPopups();
+  //     };
+  // };
 
     //добавление новой карточки
     function handleAddPlaceSubmit(cardData) {
@@ -282,6 +284,7 @@ function App() {
 
 
   const closeAllPopups = React.useCallback(() => {
+    setIsInfoTooltipOpened(false);
     setEditAvatarClick(false);
     setEditProfileClick(false);
     setAddPlaceClick(false);
@@ -411,9 +414,9 @@ function App() {
           </Routes>
           <InfoTooltip
               isSuccess={isRegistrationSuccess}
-              isOpened={isInfoTooltipOpened}
+              isOpen={isInfoTooltipOpened}
               onClose={closeAllPopups}
-              closePopupsOnOutsideClick={closePopupsOnOutsideClick}
+              onOverlayClose={handleOverlayClickClose}
           />
       </div>
   );

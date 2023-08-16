@@ -1,14 +1,14 @@
 import { useEffect } from "react";
 
-export default function useClosePopupsOnKeyPressEsc(isOpened, handleClose) {
+export default function useClosePopupsOnKeyPressEsc(isOpen, onClose) {
     useEffect(() => {
-        if (!isOpened) {
+        if (!isOpen) {
             return;
         };
 
         function handleEscBtn(evt) {
             if (evt.key === 'Escape') {
-                handleClose();
+                onClose();
             };
         };
 
@@ -17,5 +17,5 @@ export default function useClosePopupsOnKeyPressEsc(isOpened, handleClose) {
         return () => {
             document.removeEventListener('keydown', handleEscBtn);
         };
-    }, [isOpened, handleClose]);
+    }, [isOpen, onClose]);
 };

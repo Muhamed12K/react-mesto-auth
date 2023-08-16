@@ -1,12 +1,12 @@
 import iconSuccess from '../images/reg-success.svg';
 import iconFailure from '../images/reg-failure.svg';
-import useClosePopupsOnKeyPressEsc from '../hooks/closePopupEsc';
+import closePopupEsc from '../hooks/closePopupEsc';
 
-export default function InfoTooltip({ isSuccess, isOpened, onClose, closePopupsOnOutsideClick }) {
-    useClosePopupsOnKeyPressEsc(isOpened, onClose);
+export default function InfoTooltip({ isSuccess, isOpen, onClose, onOverlayClose }) {
+    closePopupEsc(isOpen, onClose);
 
     return (
-        <div className={`popup ${isOpened && 'popup_opened'}`} onClick={closePopupsOnOutsideClick}>
+        <div className={`popup ${isOpen && 'popup_opened'}`} onClick={onOverlayClose}>
             <div className="popup__container popup__container_type_info-tooltip">
                 <img
                     className="popup__icon"
@@ -17,7 +17,7 @@ export default function InfoTooltip({ isSuccess, isOpened, onClose, closePopupsO
                     {isSuccess ? 'Вы успешно зарегистрировались!' : 'Что-то пошло не так! Попробуйте ещё раз.'}
                 </h3>
                 <button
-                    className="popup__btn_action_close"
+                    className="popup__btn popup__btn_action_close"
                     type="button"
                     aria-label="Закрытие модального окна"
                     onClick={onClose}
